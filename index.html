@@ -1,71 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website of Jason Hardwick">
-    <title>Jason Hardwick's Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Jason Hardwick. Software, hardware, and things in between.">
+<title>Jason Hardwick</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3efe6; --ink: #161512; --dim: #77726a; --rule: #d8d2c4; --hot: #e2471d;
+    --serif: "Instrument Serif", Georgia, serif;
+    --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #131210; --ink: #ece6d9; --dim: #8a847a; --rule: #2c2a26; --hot: #ff6a3d; }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body { margin: 0; color: var(--ink); font: 14px/1.6 var(--mono); }
+  ::selection { background: var(--hot); color: var(--paper); }
+  a { color: inherit; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  .top { display: flex; justify-content: space-between; padding: 24px 0; color: var(--dim); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+  .top a { text-decoration: none; margin-left: 20px; }
+  .top a:hover { color: var(--hot); }
+
+  .hero { padding: 12vh 0 10vh; border-bottom: 1px solid var(--ink); }
+  .hero h1 { font: 400 clamp(64px, 13vw, 168px)/.85 var(--serif); margin: 0; letter-spacing: -.02em; }
+  .hero h1 em { color: var(--hot); }
+  .hero .lede { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; max-width: 760px; }
+  .hero .lede p { margin: 0; }
+  .hero .lede p:first-child { font: 400 24px/1.25 var(--serif); }
+
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--dim); padding: 48px 0 16px; display: flex; justify-content: space-between; }
+
+  .work { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .work a { display: grid; grid-template-columns: 48px 1fr 1.4fr 110px 24px; gap: 24px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid var(--rule); text-decoration: none; transition: padding .2s; }
+  .work .n, .work .lang { color: var(--dim); font-size: 12px; }
+  .work h3 { font: 400 32px/1 var(--serif); margin: 0; }
+  .work p { margin: 0; color: var(--dim); }
+  .work .go { justify-self: end; transition: transform .2s; }
+  .work a:hover { padding-left: 12px; }
+  .work a:hover h3, .work a:hover .go { color: var(--hot); }
+  .work a:hover .go { transform: translate(3px, -3px); }
+
+  footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 96px 0 32px; }
+  footer .big { font: 400 clamp(36px, 6vw, 64px)/1 var(--serif); text-decoration: none; }
+  footer .big:hover { color: var(--hot); }
+  footer small { color: var(--dim); align-self: flex-end; }
+
+  @media (max-width: 720px) {
+    .hero .lede { grid-template-columns: 1fr; }
+    .work a { grid-template-columns: 32px 1fr 20px; gap: 4px 12px; }
+    .work p, .work .lang { grid-column: 2; }
+    .work .go { grid-row: 1; grid-column: 3; }
+    .top .where { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+  #fx { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9; }
+  .fx-on, .fx-on a { cursor: none; }
+</style>
 </head>
-    
 <body>
-    <div id="sidebar-container"></div>
-    <div id="main">
-    <header>
-        <h1>Jason Hardwick</h1>
-        <p>Welcome to my personal website</p>
-    </header>
+<div class="wrap">
+  <nav class="top">
+    <span class="where">Charleston, SC</span>
+    <span>
+      <a href="https://github.com/JsonHrdwick">GitHub</a>
+      <a href="https://www.linkedin.com/in/jason-hardwick-038707275/">LinkedIn</a>
+      <a href="mailto:jasonhardwick96@gmail.com">Email</a>
+    </span>
+  </nav>
 
-    <section>
-        <h2>About Me</h2>
-        <p>Hello! I'm Jason, aspiring software developer and CS senior student. I specialize in writing in Java and constructing databases. I'm currently working on research work under Dr. Jim Bowring at CIRDLES and expanding my skillset as a developer. Feel free to browse my work below!</p>
-    </section>
-
-    <section class="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Tripoli</h3>
-            <p>Writing unit tests</p>
-            <p>Training and familiarizing with project/processes</p>
-            <a href="https://github.com/JsonHrdwick/Tripoli" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <h3>IdentiLeaf</h3>
-            <p>Developed as part of the group project for CSCI 362 Software Engineering course</p>
-            <p>Lead a group of 4 while developing project structure, abstract classes, and implemented individual components for the project.</p>
-            <a href="https://github.com/JsonHrdwick/IdentiLeaf" target="_blank">View Project</a>
-        </div>
-        <div class="project">
-            <h3>More coming soon...</h3>
-            <p>Stay tuned...</p>
-            <a href="https://github.com/JsonHrdwick" target="_blank">View Repo</a>
-        </div>
-    </section>
-
-    <section class="contact">
-        <h2>Contact</h2>
-        <div class="contact-item">
-            <h3>Email</h3>
-            <p><a href="mailto:jasonhardwick96@gmail.com">jasonhardwick96@gmail.com</a></p>
-        </div>
-        <div class="contact-item">
-            <h3>LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/in/jason-hardwick-038707275/" target="_blank">LinkedIn Profile</a></p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Jason Hardwick. All rights reserved.</p>
-    </footer>
+  <header class="hero">
+    <h1><span id="jason">Jason</span><br><em>Hardwick</em></h1>
+    <div class="lede">
+      <p>I write software, and occasionally solder it to something.</p>
+      <p>TypeScript, Go, and Python by trade, C++ when there's a microcontroller involved. Previously did research with Dr. Jim Bowring at CIRDLES at the College of Charleston.</p>
     </div>
-</body>
+  </header>
 
+  <div class="label"><span>Selected work</span><span>2024 to now</span></div>
+  <ol class="work">
+    <li><a href="https://github.com/JsonHrdwick/NowPlayingOverlay">
+      <span class="n">01</span><h3>NowPlaying&shy;Overlay</h3>
+      <p>Windows 11 dropped its media popup. This brings it back, wired to the system media controls.</p>
+      <span class="lang">PowerShell</span><span class="go">↗</span></a></li>
+    <li><a href="https://github.com/JsonHrdwick/stroboscopic-display">
+      <span class="n">02</span><h3>Strobe Display</h3>
+      <p>A kinetic sculpture lit by a tuned strobe so motion looks like it's happening in slow motion.</p>
+      <span class="lang">C++</span><span class="go">↗</span></a></li>
+    <li><a href="https://github.com/JsonHrdwick/Light-Controller">
+      <span class="n">03</span><h3>Light Controller</h3>
+      <p>Small web UI for the lights under my cabinets, served straight off the board.</p>
+      <span class="lang">C++</span><span class="go">↗</span></a></li>
+    <li><a href="https://github.com/JsonHrdwick/Tripoli">
+      <span class="n">04</span><h3>Tripoli</h3>
+      <p>Mass spectrometer data analysis at CIRDLES. I wrote tests and learned how real research code ships.</p>
+      <span class="lang">Java</span><span class="go">↗</span></a></li>
+    <li><a href="https://github.com/JsonHrdwick/656_project_fe">
+      <span class="n">05</span><h3>Built by AI</h3>
+      <p>Grad school experiment: a full-stack app where every line came out of Cursor. Front and back end.</p>
+      <span class="lang">TS / Java</span><span class="go">↗</span></a></li>
+    <li><a href="https://github.com/JsonHrdwick/IdentiLeaf">
+      <span class="n">06</span><h3>IdentiLeaf</h3>
+      <p>Answer a few questions, find out what tree you're standing under. Led a team of four.</p>
+      <span class="lang">Spring Boot</span><span class="go">↗</span></a></li>
+  </ol>
+
+  <footer>
+    <a class="big" href="mailto:jasonhardwick96@gmail.com">Say hello ↗</a>
+    <small>© 2026 Jason Hardwick</small>
+  </footer>
+</div>
+<canvas id="fx"></canvas>
 <script>
-  fetch('sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('sidebar-container').innerHTML = data;
-    })
-    .catch(error => console.error('Error loading sidebar:', error));
+// Cursor trail: a thin tapered ribbon that follows the exact path of the pointer.
+// Mouse/trackpad only; skipped on touch and for reduced-motion users.
+if (matchMedia('(pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const c = document.getElementById('fx'), g = c.getContext('2d');
+  const TAIL_MS = 140,     // ribbon length, in time
+        STREAK_MS = 4000;  // how long streaks stay burned into "Jason"
+  let x = -99, y = -99, r = 5, R = 5, dpr = 1, path = [], streaks = [];
+  // Streaks are drawn on a scratch canvas, then cut to the letter shapes of "Jason".
+  const name = document.getElementById('jason'), o = document.createElement('canvas'), og = o.getContext('2d');
+  const size = () => {
+    dpr = devicePixelRatio || 1;
+    const de = document.documentElement;  // client size excludes the scrollbar, matching the canvas's CSS box
+    o.width = c.width = de.clientWidth * dpr; o.height = c.height = de.clientHeight * dpr;
+  };
+  size(); addEventListener('resize', size);
+  document.body.classList.add('fx-on');
+
+  addEventListener('pointermove', e => {
+    const b = name.getBoundingClientRect(), t = performance.now();
+    const pts = e.getCoalescedEvents?.() ?? [];
+    for (const p of pts.length ? pts : [e]) {
+      path.push({ x: p.clientX, y: p.clientY, t });
+      // same path, kept longer and relative to the name so it sticks to the letters on scroll
+      streaks.push({ x: p.clientX - b.left, y: p.clientY - b.top, t });
+    }
+    x = e.clientX; y = e.clientY;
+    R = e.target.closest('a') ? 22 : 5;
+  });
+  document.documentElement.addEventListener('mouseleave', () => { x = y = -99; path = []; streaks.push(null); });
+  addEventListener('pointerdown', () => { r = R * 2.4; });
+
+  (function draw() {
+    const now = performance.now();  // same clock as the recorded points, so ages never go negative
+    const hot = getComputedStyle(document.documentElement).getPropertyValue('--hot').trim();
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, innerWidth, innerHeight);
+    g.strokeStyle = g.fillStyle = hot;
+
+    // streaks through "Jason": paint them, then keep only what overlaps the glyphs
+    streaks = streaks.filter(s => !s || now - s.t < STREAK_MS);
+    while (streaks.length && !streaks[0]) streaks.shift();
+    if (streaks.some(Boolean)) {
+      const b = name.getBoundingClientRect(), cs = getComputedStyle(name);
+      og.setTransform(dpr, 0, 0, dpr, 0, 0);
+      og.clearRect(0, 0, innerWidth, innerHeight);
+      og.globalCompositeOperation = 'source-over';
+      og.strokeStyle = hot; og.lineCap = 'round';
+      for (let i = 1; i < streaks.length; i++) {  // drawn exactly like the trail, just slower to fade
+        const a = streaks[i - 1], s = streaks[i];
+        if (!a || !s) continue;                    // gap where the mouse left the window
+        const k = 1 - (now - s.t) / STREAK_MS;
+        og.globalAlpha = k * .8; og.lineWidth = k * 5 * 1.4;
+        og.beginPath(); og.moveTo(b.left + a.x, b.top + a.y); og.lineTo(b.left + s.x, b.top + s.y); og.stroke();
+      }
+      og.globalCompositeOperation = 'destination-in'; og.globalAlpha = 1;
+      og.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      og.letterSpacing = cs.letterSpacing === 'normal' ? '0px' : cs.letterSpacing;
+      og.textBaseline = 'alphabetic';
+      og.fillText('Jason', b.left, b.top + og.measureText('Jason').fontBoundingBoxAscent);
+      g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1;
+      g.drawImage(o, 0, 0);
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    // ribbon: tapered segments, thick near the cursor, thin at the tail
+    path = path.filter(p => now - p.t < TAIL_MS);
+    g.lineCap = 'round';
+    for (let i = 1; i < path.length; i++) {
+      const k = 1 - (now - path[i].t) / TAIL_MS;
+      g.globalAlpha = k * .8; g.lineWidth = k * r * 1.4;
+      g.beginPath(); g.moveTo(path[i - 1].x, path[i - 1].y); g.lineTo(path[i].x, path[i].y); g.stroke();
+    }
+
+    // cursor itself: dot, opening into a ring over links
+    r += (R - r) * .18;
+    g.globalAlpha = 1; g.lineWidth = 1.5;
+    g.beginPath(); g.arc(x, y, r, 0, 7);
+    R > 5 ? g.stroke() : g.fill();
+    requestAnimationFrame(draw);
+  })(0);
+}
 </script>
+</body>
 </html>
